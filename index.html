@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手術前内服薬中止チェッカー</title>
+    <title>手術前内服薬チェッカー</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>手術前内服薬中止チェッカー</h1>
+    <main>
+        <h1>手術前内服薬チェッカー</h1>
+        <p>服用中の薬と手術予定日を入力してください。</p>
         <form id="drug-form">
             <div class="form-group">
-                <label for="drug-name">薬剤名:</label>
-                <input type="text" id="drug-name" name="drug_name" required>
+                <label for="drug-name">薬の名前（一つずつ入力してください）</label>
+                <input type="text" id="drug-name" placeholder="例：アスピリン" required>
             </div>
             <div class="form-group">
-                <label for="ope-day">手術日:</label>
-                <input type="date" id="ope-day" name="ope_day" required>
+                <label for="ope-day">手術予定日</label>
+                <input type="date" id="ope-day" required>
             </div>
-            <button type="submit">確認</button>
+            <button type="submit" id="check-button">確認する</button>
         </form>
-        <div id="result-container">
-            <h2>確認結果</h2>
-            <ul id="result-list"></ul>
+        <div class="results-container">
+            <h2>結果</h2>
+            <ul id="results-list">
+                <!-- Difyからの結果がここに表示されます -->
+            </ul>
+            <p id="loading-message" style="display: none;">Difyに確認中...</p>
         </div>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

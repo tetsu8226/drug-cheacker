@@ -9,6 +9,7 @@ app.use(express.static(__dirname));
 app.use(express.json());
 
 app.post('/api/check-drug', async (req, res) => {
+    console.log('Request body received:', req.body);
     const { drug_name, ope_day } = req.body.inputs;
 
     if (!drug_name || !ope_day) {
@@ -32,6 +33,7 @@ app.post('/api/check-drug', async (req, res) => {
         }
 
         const difyResult = await difyResponse.json();
+        console.log('Dify API response:', difyResult);
         res.json(difyResult);
     } catch (error) {
         console.error('Error calling Dify API:', error);
